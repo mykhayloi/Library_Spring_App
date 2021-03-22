@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<meta charset="UTF-8">
+<title>Books</title>
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+<link th:rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+
+
+<div class="user">
+
+	<p class="lead"> Welcome to the absolutely free library! Sign up by filling out the form below and the list of books available for you. Everything but the name is optional. </p>
+
+	<div class="form">
+	<form class="row g-2" th:action="@{/save}" th:object="${user}"  method="post">
+	<label class=lead>Name</label>
+
+	<input class="form-control" aria-label="default input example" type="text" th:field="*{name}">
+	
+	<p>Title</p>
+	<input class="form-control" type="text" placeholder="Title" aria-label="default input example" th:field="*{title}">
+	
+	<p>Author</p>
+	<input class="form-control" type="text" placeholder="Author" aria-label="default input example" th:field="*{author}">
+	
+	
+	<div class="form-check">
+  			<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="computer" th:field="*{genre}">
+  			<label class="form-check-label" for="flexRadioDefault1">
+    		Computer
+  			</label>
+		</div>
+		<div class="form-check">
+  			<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="fantasy" th:field="*{genre}" checked>
+  			<label class="form-check-label" for="flexRadioDefault2">
+    		Fantasy
+  			</label>
+		</div>
+		<div class="form-check">
+  			<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="romance" th:field="*{genre}" checked>
+  			<label class="form-check-label" for="flexRadioDefault2">
+    		Romance
+  			</label>
+		</div>
+		<div class="form-check">
+  			<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="horror" th:field="*{genre}" checked>
+  			<label class="form-check-label" for="flexRadioDefault2">
+   			Horror
+  			</label>
+		</div>
+		<div class="form-check">
+  			<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="science" th:field="*{genre}" checked>
+  			<label class="form-check-label" for="flexRadioDefault2">
+    		Science Fiction
+  			</label>
+		</div>
+	
+		<div class="container">
+			<div class="row">
+			<div class="col-4">
+				<input class="form-control" type="text" placeholder="min" aria-label="default input example" th:field="*{min}">
+			</div>
+			<div class="col-2">
+				<p>to</p>
+			</div>
+			<div class="col-4">
+				<input class="form-control" type="text" placeholder="max" aria-label="default input example" th:field="*{max}">
+			</div>
+			<div class="col-2">
+				<p>price</p>
+			</div>
+			</div>
+		</div>
+		
+		<div class="container">
+		<div class="row">
+		<div class="col-6">
+		<input type="checkbox" name="available" th:field="*{avail}">
+		
+		<label>List only available books</label>
+
+		<input type="submit" class="btn btn-primary"  value="Submit">
+		</div>
+		</div>
+		</div>
+
+
+	</form>
+	</div>
+	
+	
+	
+	
+	
+
+	
+		
+
+
+</div>
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

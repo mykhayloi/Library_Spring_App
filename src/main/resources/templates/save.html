@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<meta charset="UTF-8">
+<title>Books</title>
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+<link th:rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+
+
+
+
+
+<form th:action="@{/save}" th:object="${user}" method="post">
+ 
+	<p>Hey there <strong th:text="${user.name}" ></strong></p>
+	<input  type="hidden" th:object="${user}" aria-label="default input example" th:field="*{name}" >
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Author</th>
+				<th scope="col">Title</th>
+				<th scope="col">Genre</th>
+				<th scope="col">Price</th>
+				<th scope="col">Description</th>
+				<th scope="col">Status</th>	
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="bookI : ${books}">
+				
+				<td th:text="${bookI.author}" ></td>
+				<td th:text="${bookI.title}"></td>
+				<td th:text="${bookI.genre}"></td>
+				<td th:text="${bookI.price}"></td>
+				<td th:text="${bookI.description}"></td>
+				<td th:text="${bookI.status}"></td>
+				<td >
+					
+					<div class="form-check" th:switch="${bookI.status}">
+  						<input th:case="'Available'" class="form-check-input" type="radio" th:value="${bookI.id}" name="flexRadioDefault"  th:field="*{choice}" checked>
+  						<input th:case="*" class="form-check-input" type="hidden" th:value="${bookI.id}" name="flexRadioDefault"   checked>
+  						
+					</div>
+				</td>
+
+			</tr>
+		</tbody>
+		
+	</table>
+
+	<input type="submit" class="btn btn-primary"  value="Check out Book">
+	<a th:href="@{/}" class="btn btn-primary mt-5">Select new user</a>
+</form>
+</body>
+</html>
